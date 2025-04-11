@@ -1,7 +1,7 @@
 {
   "name": "luix",
   "version": "0.1.6",
-  "homepage": "https://mateuszperczak.github.io/Luix/",
+  "homepage": "https://byecir02.github.io/Desktop-portfolio",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -28,7 +28,9 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "publish": "gh-pages -b deploy -d build -t true",
-    "build:publish": "npm run build && nodetouch ./build/.nojekyll && npm run publish"
+    "build:publish": "npm run build && nodetouch ./build/.nojekyll && npm run publish",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
