@@ -10,6 +10,7 @@ import { FaFolder, FaTools, FaEnvelope } from "react-icons/fa";
 const Desktop = () => {
   const appsManager = useApps();
   const constraintsRef = useRef(null);
+
   // Liste des icônes du bureau
   const desktopIcons = [
     {
@@ -40,30 +41,42 @@ const Desktop = () => {
       transition={{ type: "spring", mass: 0.6, stiffness: 200, damping: 20 }}
       ref={constraintsRef}
     >
-          {/* Affichage des icônes du bureau */}
-          <div
+      {/* Conteneur des icônes du bureau */}
+      <div
         style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          width: "100%",
+          height: "100%",
           display: "flex",
           flexWrap: "wrap",
           gap: "20px",
           padding: "20px",
-          position: "relative",
-          zIndex: 1, // Au-dessus de l'arrière-plan
+          zIndex: 1, // Toujours derrière les fenêtres
+          pointerEvents: "none", // Empêche les interactions si une fenêtre est au-dessus
         }}
       >
         {desktopIcons.map((icon) => (
-          <DesktopIcon
+          <div
             key={icon.id}
-            icon={icon.icon}
-            label={icon.label}
-            onClick={icon.onClick}
-          />
+            style={{
+              pointerEvents: "auto", // Permet d'interagir avec les icônes
+            }}
+          >
+            <DesktopIcon
+              icon={icon.icon}
+              label={icon.label}
+              onClick={icon.onClick}
+            />
+          </div>
         ))}
       </div>
+
       {/* Section de présentation en arrière-plan */}
       <div
         style={{
-          position: "absolute", // Position absolue pour ne pas interférer
+          position: "absolute",
           top: 0,
           left: 0,
           width: "100%",
@@ -74,7 +87,7 @@ const Desktop = () => {
           alignItems: "center",
           textAlign: "center",
           color: "#fff",
-          backgroundColor: "rgba(0, 0, 0, 0.5)", // Semi-transparent
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
           zIndex: 0, // Envoyer en arrière-plan
           pointerEvents: "none", // Empêche les interactions
         }}
