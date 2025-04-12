@@ -34,10 +34,22 @@ const Desktop = () => {
           borderRadius: "10px", // Bordures arrondies pour un effet plus esthétique
         }}
       >
-        <h1 style={{ fontSize: "4rem", fontWeight: "bold", margin: 0 }}>
+        <h1
+          style={{
+            fontSize: window.innerWidth < 768 ? "2.5rem" : "4rem", // Taille réduite pour les petits écrans
+            fontWeight: "bold",
+            margin: 0,
+          }}
+        >
           BADIROU Mohamed Yecir
         </h1>
-        <h2 style={{ fontSize: "2rem", fontWeight: "normal", margin: 0 }}>
+        <h2
+          style={{
+            fontSize: window.innerWidth < 768 ? "1.5rem" : "2rem", // Taille réduite pour les petits écrans
+            fontWeight: "normal",
+            margin: 0,
+          }}
+        >
           Développeur Fullstack | Alternance
         </h2>
       </div>
