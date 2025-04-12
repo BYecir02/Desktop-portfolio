@@ -4,10 +4,33 @@ import Window from "../Window/Window";
 import { useApps } from "../../Hooks/useApps";
 import { useRef } from "react";
 import { AnimatePresence } from "framer-motion";
+import DesktopIcon from "../DesktopIcon/DesktopIcon";
+import { FaFolder, FaTools, FaEnvelope } from "react-icons/fa";
 
 const Desktop = () => {
   const appsManager = useApps();
   const constraintsRef = useRef(null);
+  // Liste des icônes du bureau
+  const desktopIcons = [
+    {
+      id: 1,
+      label: "File Explorer",
+      icon: <FaFolder size={48} />,
+      onClick: () => console.log("File Explorer ouvert !"),
+    },
+    {
+      id: 2,
+      label: "Outils",
+      icon: <FaTools size={48} />,
+      onClick: () => console.log("Outils ouverts !"),
+    },
+    {
+      id: 3,
+      label: "Contact",
+      icon: <FaEnvelope size={48} />,
+      onClick: () => console.log("Contact ouvert !"),
+    },
+  ];
 
   return (
     <StyledDesktop
@@ -17,6 +40,26 @@ const Desktop = () => {
       transition={{ type: "spring", mass: 0.6, stiffness: 200, damping: 20 }}
       ref={constraintsRef}
     >
+          {/* Affichage des icônes du bureau */}
+          <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          gap: "20px",
+          padding: "20px",
+          position: "relative",
+          zIndex: 1, // Au-dessus de l'arrière-plan
+        }}
+      >
+        {desktopIcons.map((icon) => (
+          <DesktopIcon
+            key={icon.id}
+            icon={icon.icon}
+            label={icon.label}
+            onClick={icon.onClick}
+          />
+        ))}
+      </div>
       {/* Section de présentation en arrière-plan */}
       <div
         style={{
