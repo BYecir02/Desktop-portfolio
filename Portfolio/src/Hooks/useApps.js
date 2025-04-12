@@ -2,6 +2,7 @@ import { useState, useMemo } from "react";
 import Clock from "../Apps/Clock/Clock";
 import Calculator from "../Apps/Calculator/Calculator";
 import FileExplorer from "../Apps/FileExplorer/FileExplorer";
+import ContactForm from "../Apps/ContactForm/ContactForm";
 
 const apps = [
   {
@@ -34,6 +35,13 @@ const apps = [
         title="CV"
       />
     ),
+  },
+  {
+    name: "Contact", // Nouvelle application pour le formulaire de contact
+    icon: "\uE8C3", // Icône pour le contact
+    width: 500,
+    height: 500,
+    app: ContactForm, // Utilise le composant ContactForm
   },
 ];
 

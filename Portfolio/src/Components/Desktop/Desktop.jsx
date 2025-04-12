@@ -100,7 +100,7 @@ const Desktop = () => {
             label="Contact"
             onClick={() =>
               appsManager.openApp(
-                appsManager.installedApps.find((app) => app.name === "Clock")
+                appsManager.installedApps.find((app) => app.name === "Contact")
               )
             }
           />
