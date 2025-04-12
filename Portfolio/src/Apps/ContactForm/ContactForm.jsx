@@ -48,7 +48,7 @@ const TextArea = styled.textarea`
   border-radius: 5px;
   font-size: 1rem;
   resize: none;
-    background: none; /* Couleur de fond selon le thème */
+  background: none; /* Couleur de fond selon le thème */
   transition: border-color 0.3s;
 
   &:focus {

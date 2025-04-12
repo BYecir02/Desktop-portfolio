@@ -29,6 +29,9 @@ const Desktop = () => {
           textAlign: "center",
           color: "#fff",
           zIndex: 0, // Envoyer en arrière-plan
+          backgroundColor: "rgba(0, 0, 0, 0.5)", // Fond noir semi-transparent
+          padding: "20px", // Ajout d'un padding pour espacer le contenu
+          borderRadius: "10px", // Bordures arrondies pour un effet plus esthétique
         }}
       >
         <h1 style={{ fontSize: "4rem", fontWeight: "bold", margin: 0 }}>
