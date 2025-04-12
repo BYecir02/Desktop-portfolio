@@ -13,6 +13,7 @@ const Window = ({
   icon,
   name,
   app,
+  content, // Ajout de la prop "content"
   width,
   height,
   zIndex,
@@ -51,7 +52,7 @@ const Window = ({
   };
 
   setTimeout(() => {
-    if (app) {
+    if (app || content) {
       setDrawContent(true);
     }
   }, 500);
@@ -69,7 +70,7 @@ const Window = ({
           : Math.min(height, screenSize.height - 20),
         top: isFullScreen ? 0 : undefined,
         left: isFullScreen ? 0 : undefined,
-        maxWidth: screenSize.width ,
+        maxWidth: screenSize.width,
         maxHeight: screenSize.height - 50,
         minWidth: 300,
         minHeight: 200,
@@ -107,9 +108,40 @@ const Window = ({
         </div>
       </StyledWindowTitleWrapper>
       <StyledWindowContent>
-        {drawContent ? <App /> : <Icon>{icon}</Icon>}
+        {drawContent ? (
+          app ? (
+            <App />
+          ) : (
+            content && (
+              <div
+                style={{
+                  width: "100%",
+                  height: "100%",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  overflow: "hidden",
+                }}
+              >
+                <iframe
+                  src="./CV.pdf"
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    border: "none",
+                    objectFit: "contain", // S'assure que le contenu s'adapte à la fenêtre
+                  }}
+                  title="CV"
+                />
+              </div>
+            )
+          )
+        ) : (
+          <Icon>{icon}</Icon>
+        )}
       </StyledWindowContent>
     </StyledWindow>
   );
 };
+
 export default Window;

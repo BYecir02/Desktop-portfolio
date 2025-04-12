@@ -13,45 +13,28 @@ const apps = [
   },
   {
     name: "File Explorer",
-    icon: "\uE8DA", 
+    icon: "\uE8DA",
     width: 800,
     height: 600,
     app: FileExplorer,
   },
-  // {
-  //   name: "Clippy",
-  //   icon: "\uE723",
-  //   width: 200,
-  //   height: 800,
-  // },
-  // {
-  //   name: "Files",
-  //   icon: "\uE7B8",
-  //   width: 200,
-  //   height: 800,
-  // },
-  // {
-  //   name: "Web",
-  //   icon: "\uE12B",
-  // },
-  // {
-  //   name: "Paint",
-  //   icon: "\uE2B1",
-  // },
-  // {
-  //   name: "Camera",
-  //   icon: "\uE722",
-  // },
-  // {
-  //   name: "Music",
-  //   icon: "\uE768",
-  // },
-  // {
-  //   name: "Calendar",
-  //   icon: "\uE1DC",
-  //   width: 200,
-  //   height: 800,
-  // },
+  {
+    name: "CV", // Nouvelle application pour le CV
+    icon: "\uE8A5", // Icône pour le CV
+    width: 800, // Largeur de la fenêtre
+    height: 600, // Hauteur de la fenêtre
+    content: () => (
+      <iframe
+        src="./CV.pdf" // Chemin vers le fichier PDF
+        style={{
+          width: "100%",
+          height: "100%",
+          border: "none",
+        }}
+        title="CV"
+      />
+    ),
+  },
 ];
 
 export const useApps = () => {
