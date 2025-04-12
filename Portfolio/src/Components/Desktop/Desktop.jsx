@@ -16,20 +16,20 @@ const Desktop = () => {
     {
       id: 1,
       label: "File Explorer",
-      icon: <FaFolder size={48} />,
-      onClick: () => console.log("File Explorer ouvert !"),
+      icon: <FaFolder size={42} />,
+      appName: "File Explorer", // Nom de l'application
     },
     {
       id: 2,
       label: "Outils",
-      icon: <FaTools size={48} />,
-      onClick: () => console.log("Outils ouverts !"),
+      icon: <FaTools size={42} />,
+      appName: "Calculator", // Nom de l'application
     },
     {
       id: 3,
       label: "Contact",
-      icon: <FaEnvelope size={48} />,
-      onClick: () => console.log("Contact ouvert !"),
+      icon: <FaEnvelope size={42} />,
+      appName: "Clock", // Nom de l'application
     },
   ];
 
@@ -67,7 +67,7 @@ const Desktop = () => {
             <DesktopIcon
               icon={icon.icon}
               label={icon.label}
-              onClick={icon.onClick}
+              onClick={() => appsManager.openApp(appsManager.installedApps.find(app => app.name === icon.appName))}
             />
           </div>
         ))}
