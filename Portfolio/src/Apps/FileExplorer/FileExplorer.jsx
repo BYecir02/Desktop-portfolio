@@ -35,7 +35,7 @@ const IconLabel = styled.span`
   color: ${({ theme }) => theme.text};
 `;
 
-const PortfolioNavbar = () => {
+const FileExplorer = () => {
   const portfolioItems = [
     { id: 1, name: 'Projets', icon: <FaFolder size={24} /> },
     { id: 2, name: 'Compétences', icon: <FaTools size={24} /> },
@@ -57,4 +57,4 @@ const PortfolioNavbar = () => {
   );
 };
 
-export default PortfolioNavbar;
+export default FileExplorer;

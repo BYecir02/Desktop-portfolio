@@ -65,9 +65,7 @@ const Window = ({
       style={{
         zIndex,
         width: isFullScreen ? "100vw" : Math.min(width, screenSize.width - 2),
-        height: isFullScreen
-          ? "100vh"
-          : Math.min(height, screenSize.height - 20),
+        height: isFullScreen ? "100vh" : Math.min(height, screenSize.height - 20),
         top: isFullScreen ? 0 : undefined,
         left: isFullScreen ? 0 : undefined,
         maxWidth: screenSize.width,
@@ -112,29 +110,7 @@ const Window = ({
           app ? (
             <App />
           ) : (
-            content && (
-              <div
-                style={{
-                  width: "100%",
-                  height: "100%",
-                  display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  overflow: "hidden",
-                }}
-              >
-                <iframe
-                  src="./CV.pdf"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    border: "none",
-                    objectFit: "contain", // S'assure que le contenu s'adapte à la fenêtre
-                  }}
-                  title="CV"
-                />
-              </div>
-            )
+            content && content()
           )
         ) : (
           <Icon>{icon}</Icon>

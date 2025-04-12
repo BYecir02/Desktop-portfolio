@@ -13,6 +13,13 @@ const apps = [
     app: Calculator,
   },
   {
+    name: "File Explorer",
+    icon: "\uE8DA",
+    width: 800,
+    height: 600,
+    app: FileExplorer,
+  },
+  {
     name: "CV", // Nouvelle application pour le CV
     icon: "\uE8A5", // Icône pour le CV
     width: 800, // Largeur de la fenêtre
@@ -59,13 +66,7 @@ export const useApps = () => {
         width: 700,
         height: 500,
       },
-      {
-        name: "File Explorer",
-        icon: "\uE8DA",
-        width: 800,
-        height: 600,
-        app: FileExplorer,
-      },
+
     ],
     []
   );
