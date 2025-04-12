@@ -50,7 +50,7 @@ const Desktop = () => {
             margin: 0,
           }}
         >
-          Développeur Fullstack | Alternance
+          Développeur Fullstack
         </h2>
       </div>
 
