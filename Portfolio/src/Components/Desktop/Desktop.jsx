@@ -86,6 +86,15 @@ const Desktop = () => {
             }
           />
           <DesktopIcon
+            icon={<span style={{ fontFamily: "Segoe MDL2 Assets", fontSize: "42px" }}>&#xE713;</span>} // Utilisation de l'icône Unicode
+            label="Paramètres"
+            onClick={() =>
+              appsManager.openApp(
+                appsManager.systemApps.find((app) => app.name === "Settings")
+              )
+            }
+          />
+          <DesktopIcon
             icon={<FaFolder size={42} />}
             label="File Explorer"
             onClick={() =>

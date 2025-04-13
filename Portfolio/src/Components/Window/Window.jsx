@@ -65,9 +65,12 @@ const Window = ({
       style={{
         zIndex,
         width: isFullScreen ? "100vw" : Math.min(width, screenSize.width - 2),
-        height: isFullScreen ? "100vh" : Math.min(height, screenSize.height - 20),
-        top: isFullScreen ? 0 : undefined,
-        left: isFullScreen ? 0 : undefined,
+        height:
+          isFullScreen || screenSize.width <= 390 // Condition pour petits écrans
+            ? "100vh"
+            : Math.min(height, screenSize.height - 20),
+        top: isFullScreen || screenSize.width <= 390 ? 0 : undefined, // Position en haut pour petits écrans
+        left: isFullScreen || screenSize.width <= 390 ? 0 : undefined, // Position à gauche pour petits écrans
         maxWidth: screenSize.width,
         maxHeight: screenSize.height - 50,
         minWidth: 300,

@@ -4,6 +4,7 @@ import Calculator from "../Apps/Calculator/Calculator";
 import FileExplorer from "../Apps/FileExplorer/FileExplorer";
 import ContactForm from "../Apps/ContactForm/ContactForm";
 import About from "../Apps/About/About";
+import Settings from "../Apps/Settings/Settings"; // Importation du composant Settings
 
 const apps = [
   {
@@ -64,8 +65,9 @@ export const useApps = () => {
       {
         name: "Settings",
         icon: "\uE713",
-        width: 700,
-        height: 500,
+        width: 500,
+        height: 400,
+        app: (props) => <Settings {...props} />, 
       },
       {
         name: "File Explorer",
