@@ -9,7 +9,7 @@ const StyledForm = styled.form`
   padding: 20px;
   width: 100%;
   height: 100%;
-  background-color: ${({ theme }) => theme.appContent}; /* Couleur du thème */
+  background-color: ${({ theme }) => theme.appContent};
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 `;
@@ -17,49 +17,49 @@ const StyledForm = styled.form`
 const Title = styled.h2`
   margin: 0;
   font-size: 1.8rem;
-  color: ${({ theme }) => theme.color}; /* Couleur du texte selon le thème */
+  color: ${({ theme }) => theme.color};
   text-align: center;
 `;
 
 const Subtitle = styled.p`
   margin: 0;
   font-size: 1rem;
-  color: ${({ theme }) => theme.color}; /* Couleur du texte selon le thème */
+  color: ${({ theme }) => theme.color};
   text-align: center;
 `;
 
 const Input = styled.input`
   padding: 12px;
-  border: 1px solid ${({ theme }) => theme.border}; /* Bordure selon le thème */
+  border: 1px solid ${({ theme }) => theme.border};
   border-radius: 5px;
   font-size: 1rem;
-  background: none; /* Couleur de fond selon le thème */
+  background: none;
   transition: border-color 0.3s;
 
   &:focus {
-    border-color: ${({ theme }) => theme.color}; /* Couleur de focus selon le thème */
+    border-color: ${({ theme }) => theme.color};
     outline: none;
   }
 `;
 
 const TextArea = styled.textarea`
   padding: 12px;
-  border: 1px solid ${({ theme }) => theme.border}; /* Bordure selon le thème */
+  border: 1px solid ${({ theme }) => theme.border};
   border-radius: 5px;
   font-size: 1rem;
   resize: none;
-  background: none; /* Couleur de fond selon le thème */
+  background: none;
   transition: border-color 0.3s;
 
   &:focus {
-    border-color: ${({ theme }) => theme.color}; /* Couleur de focus selon le thème */
+    border-color: ${({ theme }) => theme.color};
     outline: none;
   }
 `;
 
 const Button = styled.button`
   padding: 12px;
-  background-color: ${({ theme }) => theme.taskbarAppActive}; /* Couleur du bouton selon le thème */
+  background-color: ${({ theme }) => theme.taskbarAppActive};
   color: ${({ theme }) => theme.color};
   border: none;
   border-radius: 5px;
@@ -68,29 +68,57 @@ const Button = styled.button`
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: ${({ theme }) => theme.taskbarApp}; /* Couleur au survol */
+    background-color: ${({ theme }) => theme.taskbarApp};
   }
 `;
 
-const ContactForm = () => {
-  const theme = useTheme(); // Accéder au thème
+const StatusMessage = styled.p`
+  color: ${({ theme, isError }) => (isError ? "red" : theme.color)};
+  text-align: center;
+  font-size: 0.9rem;
+`;
 
+const ContactForm = () => {
+  const theme = useTheme();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
   });
+  const [status, setStatus] = useState("");
+  const [isError, setIsError] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    alert("Message envoyé !");
-    setFormData({ name: "", email: "", message: "" });
+    setStatus("Envoi en cours...");
+    setIsError(false);
+
+    try {
+      const response = await fetch("https://formspree.io/f/mdkebboo", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setStatus("Message envoyé avec succès !");
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        setStatus("Erreur lors de l'envoi.");
+        setIsError(true);
+      }
+    } catch (error) {
+      setStatus("Erreur lors de l'envoi.");
+      setIsError(true);
+    }
   };
 
   return (
@@ -129,6 +157,11 @@ const ContactForm = () => {
       <Button type="submit" theme={theme}>
         Envoyer
       </Button>
+      {status && (
+        <StatusMessage theme={theme} isError={isError}>
+          {status}
+        </StatusMessage>
+      )}
     </StyledForm>
   );
 };
