@@ -90,9 +90,7 @@ const Desktop = () => {
             label="File Explorer"
             onClick={() =>
               appsManager.openApp(
-                appsManager.installedApps.find(
-                  (app) => app.name === "File Explorer"
-                )
+                appsManager.systemApps.find((app) => app.name === "File Explorer")
               )
             }
           />
