@@ -120,4 +120,4 @@ const Window = ({
   );
 };
 
-export default Window;
+export default Window;  

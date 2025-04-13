@@ -3,8 +3,16 @@ import Clock from "../Apps/Clock/Clock";
 import Calculator from "../Apps/Calculator/Calculator";
 import FileExplorer from "../Apps/FileExplorer/FileExplorer";
 import ContactForm from "../Apps/ContactForm/ContactForm";
+import About from "../Apps/About/About";
 
 const apps = [
+  {
+    name: "About",
+    icon: "\uE77B", // Icône Bitmoji ou similaire
+    width: 500,
+    height: 600,
+    app: About, // Composant associé
+  },
   {
     name: "Calculator",
     icon: "\uE1D0",

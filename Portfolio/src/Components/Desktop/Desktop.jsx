@@ -5,7 +5,7 @@ import { useApps } from "../../Hooks/useApps";
 import { useRef } from "react"; // Suppression de useState, car FileFrame n'est plus utilisé
 import { AnimatePresence } from "framer-motion";
 import DesktopIcon from "../DesktopIcon/DesktopIcon";
-import { FaFolder, FaTools, FaEnvelope, FaFileAlt } from "react-icons/fa"; // Ajout de FaFileAlt
+import { FaUser, FaFolder, FaTools, FaEnvelope, FaFileAlt } from "react-icons/fa"; // Ajout de FaFileAlt
 
 const Desktop = () => {
   const appsManager = useApps();
@@ -76,6 +76,15 @@ const Desktop = () => {
             pointerEvents: "auto",
           }}
         >
+          <DesktopIcon
+            icon={<FaUser size={42} />} // Remplacez par une icône Bitmoji si disponible
+            label="À propos"
+            onClick={() =>
+              appsManager.openApp(
+                appsManager.installedApps.find((app) => app.name === "About")
+              )
+            }
+          />
           <DesktopIcon
             icon={<FaFolder size={42} />}
             label="File Explorer"
