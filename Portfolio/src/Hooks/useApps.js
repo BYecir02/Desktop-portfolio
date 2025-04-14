@@ -9,13 +9,7 @@ import ProjectApp from "../Apps/ProjectApp/ProjectApp";
 import { FaProjectDiagram } from "react-icons/fa";
 
 const apps = [
-  {
-    name: "About",
-    icon: "\uE77B", // Icône Bitmoji ou similaire
-    width: 500,
-    height: 600,
-    app: About, // Composant associé
-  },
+
   {
     name: "Calculator",
     icon: "\uE1D0",
@@ -64,6 +58,13 @@ export const useApps = () => {
   const [windowPos, setWindowPos] = useState({});
   const systemApps = useMemo(
     () => [
+      {
+        name: "About",
+        icon: "\uE77B", // Icône Bitmoji ou similaire
+        width: 500,
+        height: 600,
+        app: About, // Composant associé
+      },
       {
         name: "Clock",
         icon: "\uE121",

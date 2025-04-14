@@ -42,25 +42,18 @@ const ProjectApp = () => {
       image: matchcv,
     },
     {
-      id: 2,
-      name: "Projet 2",
-      description: "Description du projet 2",
-      details: "Détails complets du projet 2...",
-      period: "Avril 2023 - Juin 2023",
-      type: "Application Mobile",
-      github: "https://github.com/username/projet2",
-      image: "https://via.placeholder.com/300x200",
-    },
-    {
-      id: 3,
-      name: "Projet 3",
-      description: "Description du projet 3",
-      details: "Détails complets du projet 3...",
-      period: "Juillet 2023 - Septembre 2023",
-      type: "Logiciel Desktop",
-      github: "https://github.com/username/projet3",
-      image: "https://via.placeholder.com/300x200",
-    },
+        id: 2,
+        name: "Application de gestion de sortie",
+        description:
+          "Application web facilitant l'organisation et la gestion des événements en centralisant les inscriptions et les notifications des participants.",
+        details: `
+          - Technologies : Figma, React JS, Node JS et Express, MySQL
+        `,
+        period: "Juin 2024",
+        type: "Application Web",
+        github: "https://github.com/username/projet2",
+        image: matchcv,
+      },
   ];
 
   return (
