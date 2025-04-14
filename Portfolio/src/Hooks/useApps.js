@@ -5,6 +5,8 @@ import FileExplorer from "../Apps/FileExplorer/FileExplorer";
 import ContactForm from "../Apps/ContactForm/ContactForm";
 import About from "../Apps/About/About";
 import Settings from "../Apps/Settings/Settings"; // Importation du composant Settings
+import ProjectApp from "../Apps/ProjectApp/ProjectApp";
+import { FaProjectDiagram } from "react-icons/fa";
 
 const apps = [
   {
@@ -45,6 +47,13 @@ const apps = [
     height: 500,
     app: ContactForm, // Utilise le composant ContactForm
   },
+  {
+    name: "Projet",
+    icon: <FaProjectDiagram />, // Icône de dossier
+    width: 600,
+    height: 400,
+    app: ProjectApp, // Composant pour afficher la liste des projets
+  },
 ];
 
 export const useApps = () => {
@@ -81,18 +90,34 @@ export const useApps = () => {
   );
 
   const openApp = (app) => {
+    console.log("Ouverture de l'application :", app); // Vérifiez que cette ligne s'affiche
     if (openApps.find((openApp) => openApp.name === app.name)) {
       focusApp(app);
       return;
     }
-    setOpenApps((appsList) => {
-      return [...appsList, app];
-    });
+    setOpenApps((appsList) => [...appsList, app]);
     setOpenWindows((windowsList) => {
       const zIndex = windowsList.length + 1;
       return [...windowsList, { ...app, zIndex }];
     });
     setFocusedApp(app);
+  };
+
+  const openProject = (project) => {
+    const projectApp = {
+      name: project.name,
+      icon: "\uE8B7", // Icône de dossier
+      width: 600,
+      height: 400,
+      content: () => (
+        <div style={{ padding: "20px" }}>
+          <h1>{project.name}</h1>
+          <p>{project.description}</p>
+        </div>
+      ),
+    };
+  
+    openApp(projectApp);
   };
 
   const focusApp = (app) => {
@@ -148,5 +173,6 @@ export const useApps = () => {
     closeApp,
     centerWindows,
     windowPos,
+    openProject,
   };
 };

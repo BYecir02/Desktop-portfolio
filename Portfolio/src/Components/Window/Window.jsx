@@ -21,7 +21,7 @@ const Window = ({
   constraintsRef,
 }) => {
   const controls = useDragControls();
-  const winPos = appsManager.windowPos;
+  const winPos = appsManager?.windowPos || { x: 0, y: 0 };
 
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [drawContent, setDrawContent] = useState(false);
@@ -123,4 +123,4 @@ const Window = ({
   );
 };
 
-export default Window;  
+export default Window;

@@ -2,10 +2,10 @@ import StyledDesktop from "./Desktop.style";
 import Taskbar from "../Taskbar/Taskbar";
 import Window from "../Window/Window";
 import { useApps } from "../../Hooks/useApps";
-import { useRef } from "react"; // Suppression de useState, car FileFrame n'est plus utilisé
+import { useRef } from "react";
 import { AnimatePresence } from "framer-motion";
 import DesktopIcon from "../DesktopIcon/DesktopIcon";
-import { FaUser, FaFolder, FaTools, FaEnvelope, FaFileAlt } from "react-icons/fa"; // Ajout de FaFileAlt
+import { FaFolder, FaUser, FaTools, FaEnvelope, FaFileAlt, FaProjectDiagram, FaCog } from "react-icons/fa";
 
 const Desktop = () => {
   const appsManager = useApps();
@@ -28,15 +28,15 @@ const Desktop = () => {
           transform: "translate(-50%, -50%)",
           textAlign: "center",
           color: "#fff",
-          zIndex: 0, // Envoyer en arrière-plan
-          backgroundColor: "rgba(0, 0, 0, 0.5)", // Fond noir semi-transparent
-          padding: "20px", // Ajout d'un padding pour espacer le contenu
-          borderRadius: "10px", // Bordures arrondies pour un effet plus esthétique
+          zIndex: 0,
+          backgroundColor: "rgba(0, 0, 0, 0.5)",
+          padding: "20px",
+          borderRadius: "10px",
         }}
       >
         <h1
           style={{
-            fontSize: window.innerWidth < 768 ? "2.5rem" : "4rem", // Taille réduite pour les petits écrans
+            fontSize: window.innerWidth < 768 ? "2.5rem" : "4rem",
             fontWeight: "bold",
             margin: 0,
           }}
@@ -45,7 +45,7 @@ const Desktop = () => {
         </h1>
         <h2
           style={{
-            fontSize: window.innerWidth < 768 ? "1.5rem" : "2rem", // Taille réduite pour les petits écrans
+            fontSize: window.innerWidth < 768 ? "1.5rem" : "2rem",
             fontWeight: "normal",
             margin: 0,
           }}
@@ -77,7 +77,7 @@ const Desktop = () => {
           }}
         >
           <DesktopIcon
-            icon={<FaUser size={42} />} // Remplacez par une icône Bitmoji si disponible
+            icon={<FaUser size={42} />}
             label="À propos"
             onClick={() =>
               appsManager.openApp(
@@ -86,11 +86,20 @@ const Desktop = () => {
             }
           />
           <DesktopIcon
-            icon={<span style={{ fontFamily: "Segoe MDL2 Assets", fontSize: "42px" }}>&#xE713;</span>} // Utilisation de l'icône Unicode
+            icon={<FaCog size={42} />} // Nouvelle icône pour Paramètres
             label="Paramètres"
             onClick={() =>
               appsManager.openApp(
                 appsManager.systemApps.find((app) => app.name === "Settings")
+              )
+            }
+          />
+          <DesktopIcon
+            icon={<FaProjectDiagram size={42} />} // Nouvelle icône pour Projet
+            label="Projet"
+            onClick={() =>
+              appsManager.openApp(
+                appsManager.installedApps.find((app) => app.name === "Projet")
               )
             }
           />
@@ -108,24 +117,21 @@ const Desktop = () => {
           style={{
             pointerEvents: "auto",
           }}
+        ></div>
+        <div
+          style={{
+            pointerEvents: "auto",
+          }}
         >
           <DesktopIcon
             icon={<FaTools size={42} />}
             label="Outils"
             onClick={() =>
               appsManager.openApp(
-                appsManager.installedApps.find(
-                  (app) => app.name === "Calculator"
-                )
+                appsManager.installedApps.find((app) => app.name === "Calculator")
               )
             }
           />
-        </div>
-        <div
-          style={{
-            pointerEvents: "auto",
-          }}
-        >
           <DesktopIcon
             icon={<FaEnvelope size={42} />}
             label="Contact"
@@ -135,12 +141,6 @@ const Desktop = () => {
               )
             }
           />
-        </div>
-        <div
-          style={{
-            pointerEvents: "auto",
-          }}
-        >
           <DesktopIcon
             icon={<FaFileAlt size={42} />}
             label="CV"
@@ -151,11 +151,17 @@ const Desktop = () => {
             }
           />
         </div>
+        <div
+          style={{
+            pointerEvents: "auto",
+          }}
+        ></div>
       </div>
 
       {/* Contenu interactif */}
       <AnimatePresence>
         {appsManager.openWindows.map((app) => {
+          console.log("Fenêtre ouverte :", app);
           return (
             <Window
               key={app.name}
