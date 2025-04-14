@@ -81,7 +81,7 @@ const Desktop = () => {
             label="À propos"
             onClick={() =>
               appsManager.openApp(
-                appsManager.installedApps.find((app) => app.name === "About")
+                appsManager.systemApps.find((app) => app.name === "About")
               )
             }
           />
