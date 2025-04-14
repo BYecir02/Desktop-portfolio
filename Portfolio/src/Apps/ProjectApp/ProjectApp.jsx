@@ -28,7 +28,7 @@ const ProjectApp = () => {
       id: 1,
       name: "MatchCV",
       description:
-        "MatchCV est une plateforme qui simplifie et optimise la recherche d’emploi ou d’alternance...",
+        "MatchCV est une plateforme dédiée à l’optimisation de la recherche d’emploi et d’alternance. L’utilisateur y insère des annonces d’emploi, et l'outil analyse ces annonces pour extraire les informations essentielles telles que les compétences requises, le titre du poste, et les autres critères. Ensuite, l’utilisateur peut comparer son profil aux critères de l’annonce et générer un CV et une lettre de motivation personnalisés, exportables en format PDF. L'outil permet aussi de suivre l’évolution des candidatures : l’état des candidatures envoyées, des réponses obtenues, des entretiens programmés, etc.",
       details: `
         - Frontend : React, Tailwind CSS
         - Backend : Django (Python)

@@ -14,11 +14,10 @@ export const ProjectContainer = styled.div`
 export const NavigationBar = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
 `;
 
 export const NavigationIcon = styled.div`
-  font-size: 1.5rem;
+  font-size: 0.7rem;
   cursor: pointer;
   color: ${({ theme }) => theme.color};
 

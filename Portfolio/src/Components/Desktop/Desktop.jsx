@@ -5,7 +5,7 @@ import { useApps } from "../../Hooks/useApps";
 import { useRef } from "react";
 import { AnimatePresence } from "framer-motion";
 import DesktopIcon from "../DesktopIcon/DesktopIcon";
-import { FaFolder, FaUser, FaTools, FaEnvelope, FaFileAlt, FaProjectDiagram, FaCog } from "react-icons/fa";
+import { FaFolder, FaUser, FaTools, FaEnvelope, FaFileAlt, FaProjectDiagram } from "react-icons/fa";
 
 const Desktop = () => {
   const appsManager = useApps();
@@ -86,15 +86,6 @@ const Desktop = () => {
             }
           />
           <DesktopIcon
-            icon={<FaCog size={42} />} // Nouvelle icône pour Paramètres
-            label="Paramètres"
-            onClick={() =>
-              appsManager.openApp(
-                appsManager.systemApps.find((app) => app.name === "Settings")
-              )
-            }
-          />
-          <DesktopIcon
             icon={<FaProjectDiagram size={42} />} // Nouvelle icône pour Projet
             label="Projet"
             onClick={() =>
@@ -124,15 +115,6 @@ const Desktop = () => {
           }}
         >
           <DesktopIcon
-            icon={<FaTools size={42} />}
-            label="Outils"
-            onClick={() =>
-              appsManager.openApp(
-                appsManager.installedApps.find((app) => app.name === "Calculator")
-              )
-            }
-          />
-          <DesktopIcon
             icon={<FaEnvelope size={42} />}
             label="Contact"
             onClick={() =>
@@ -147,6 +129,15 @@ const Desktop = () => {
             onClick={() =>
               appsManager.openApp(
                 appsManager.installedApps.find((app) => app.name === "CV")
+              )
+            }
+          />
+          <DesktopIcon
+            icon={<FaTools size={42} />} // Icône pour les compétences
+            label="Compétences"
+            onClick={() =>
+              appsManager.openApp(
+                appsManager.installedApps.find((app) => app.name === "Compétences")
               )
             }
           />

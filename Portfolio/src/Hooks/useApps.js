@@ -7,9 +7,16 @@ import About from "../Apps/About/About";
 import Settings from "../Apps/Settings/Settings"; // Importation du composant Settings
 import ProjectApp from "../Apps/ProjectApp/ProjectApp";
 import { FaProjectDiagram } from "react-icons/fa";
+import SkillsApp from "../Apps/SkillsApp/SkillsApp";
 
 const apps = [
-
+  {
+    name: "Compétences",
+    icon: "\uE8D3", // Icône pour les compétences
+    width: 500,
+    height: 600,
+    app: SkillsApp,
+  },
   {
     name: "Calculator",
     icon: "\uE1D0",
