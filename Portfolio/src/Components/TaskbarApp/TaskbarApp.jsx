@@ -1,7 +1,7 @@
 import StyledTaskbarApp from "./TaskbarApp.style";
 import Icon from "../Icon/Icon";
 
-const TaskbarApp = ({ icon, app, content, ...rest }) => {
+const TaskbarApp = ({ icon, app, label, ...rest }) => {
   return (
     <StyledTaskbarApp
       {...rest} // Passe uniquement les propriétés restantes
@@ -10,6 +10,18 @@ const TaskbarApp = ({ icon, app, content, ...rest }) => {
       exit={{ opacity: 0, y: "100%" }}
     >
       <Icon>{icon}</Icon>
+      {label && (
+        <div
+          style={{
+            fontSize: "0.8rem",
+            marginTop: "5px",
+            textAlign: "center",
+            color: "#fff",
+          }}
+        >
+          {label}
+        </div>
+      )}
     </StyledTaskbarApp>
   );
 };

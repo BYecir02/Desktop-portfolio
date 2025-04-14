@@ -5,7 +5,9 @@ import { useApps } from "../../Hooks/useApps";
 import { useRef } from "react";
 import { AnimatePresence } from "framer-motion";
 import DesktopIcon from "../DesktopIcon/DesktopIcon";
-import { FaFolder, FaUser, FaTools, FaEnvelope, FaFileAlt, FaProjectDiagram } from "react-icons/fa";
+import { FaUser, FaTools, FaEnvelope, FaFileAlt, FaProjectDiagram } from "react-icons/fa";
+import { FaGraduationCap } from "react-icons/fa";
+import { FaTrash } from "react-icons/fa";
 
 const Desktop = () => {
   const appsManager = useApps();
@@ -71,11 +73,16 @@ const Desktop = () => {
         }}
       >
         {/* Icônes du bureau */}
-        <div
-          style={{
-            pointerEvents: "auto",
-          }}
-        >
+        <div style={{ pointerEvents: "auto" }}>
+          <DesktopIcon
+            icon={<FaTrash size={42} />}
+            label="Corbeille"
+            onClick={() =>
+              appsManager.openApp(
+                appsManager.installedApps.find((app) => app.name === "Corbeille")
+              )
+            }
+          />
           <DesktopIcon
             icon={<FaUser size={42} />}
             label="À propos"
@@ -86,7 +93,18 @@ const Desktop = () => {
             }
           />
           <DesktopIcon
-            icon={<FaProjectDiagram size={42} />} // Nouvelle icône pour Projet
+            icon={<FaGraduationCap size={42} />}
+            label="Études"
+            onClick={() =>
+              appsManager.openApp(
+                appsManager.systemApps.find((app) => app.name === "Études/Formations")
+              )
+            }
+          />
+        </div>
+        <div style={{ pointerEvents: "auto" }}>
+          <DesktopIcon
+            icon={<FaProjectDiagram size={42} />}
             label="Projet"
             onClick={() =>
               appsManager.openApp(
@@ -95,25 +113,27 @@ const Desktop = () => {
             }
           />
           <DesktopIcon
-            icon={<FaFolder size={42} />}
-            label="File Explorer"
+            icon={<FaTools size={42} />}
+            label="Compétences"
             onClick={() =>
               appsManager.openApp(
-                appsManager.systemApps.find((app) => app.name === "File Explorer")
+                appsManager.installedApps.find((app) => app.name === "Compétences")
               )
             }
           />
+          {/*
+            <DesktopIcon
+              icon={<FaFolder size={42} />}
+              label="File Explorer"
+              onClick={() =>
+                appsManager.openApp(
+                  appsManager.systemApps.find((app) => app.name === "File Explorer")
+                )
+              }
+            />
+          */}
         </div>
-        <div
-          style={{
-            pointerEvents: "auto",
-          }}
-        ></div>
-        <div
-          style={{
-            pointerEvents: "auto",
-          }}
-        >
+        <div style={{ pointerEvents: "auto" }}>
           <DesktopIcon
             icon={<FaEnvelope size={42} />}
             label="Contact"
@@ -132,21 +152,7 @@ const Desktop = () => {
               )
             }
           />
-          <DesktopIcon
-            icon={<FaTools size={42} />} // Icône pour les compétences
-            label="Compétences"
-            onClick={() =>
-              appsManager.openApp(
-                appsManager.installedApps.find((app) => app.name === "Compétences")
-              )
-            }
-          />
         </div>
-        <div
-          style={{
-            pointerEvents: "auto",
-          }}
-        ></div>
       </div>
 
       {/* Contenu interactif */}

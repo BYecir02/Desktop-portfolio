@@ -1,18 +1,27 @@
 import { useState, useMemo } from "react";
 import Clock from "../Apps/Clock/Clock";
 import Calculator from "../Apps/Calculator/Calculator";
-import FileExplorer from "../Apps/FileExplorer/FileExplorer";
+// import FileExplorer from "../Apps/FileExplorer/FileExplorer";
 import ContactForm from "../Apps/ContactForm/ContactForm";
 import About from "../Apps/About/About";
-import Settings from "../Apps/Settings/Settings"; // Importation du composant Settings
+import Settings from "../Apps/Settings/Settings";
 import ProjectApp from "../Apps/ProjectApp/ProjectApp";
-import { FaProjectDiagram } from "react-icons/fa";
 import SkillsApp from "../Apps/SkillsApp/SkillsApp";
+import EducationApp from "../Apps/EducationApp/EducationApp";
+import { FaTools, FaGraduationCap, FaProjectDiagram } from "react-icons/fa"; // Import des icônes nécessaires
+import TrashApp from "../Apps/TrashApp/TrashApp"; // Import de l'application Corbeille
 
 const apps = [
   {
+    name: "Corbeille",
+    icon: "\uE74D", // Icône de corbeille
+    width: 400,
+    height: 300,
+    app: TrashApp,
+  },
+  {
     name: "Compétences",
-    icon: "\uE8D3", // Icône pour les compétences
+    icon: <FaTools />, // Icône pour les compétences
     width: 500,
     height: 600,
     app: SkillsApp,
@@ -73,6 +82,13 @@ export const useApps = () => {
         app: About, // Composant associé
       },
       {
+        name: "Études/Formations",
+        icon: <FaGraduationCap />, // Icône pour les études
+        width: 500,
+        height: 400,
+        app: EducationApp,
+      },
+      {
         name: "Clock",
         icon: "\uE121",
         width: 450,
@@ -86,6 +102,7 @@ export const useApps = () => {
         height: 400,
         app: (props) => <Settings {...props} />, 
       },
+      /*
       {
         name: "File Explorer",
         icon: "\uE8DA",
@@ -93,6 +110,7 @@ export const useApps = () => {
         height: 600,
         app: FileExplorer,
       },
+      */
     ],
     []
   );

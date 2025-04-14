@@ -3,10 +3,10 @@ import { motion } from "framer-motion";
 
 const StyledTaskbarApp = styled(motion.div)`
   display: flex;
+  flex-direction: column; /* Permet d'empiler l'icône et le label */
   align-items: center;
   justify-content: center;
-  height: 100%;
-  aspect-ratio: 1;
+  padding: 8px; /* Réduction du padding global */
   border-radius: 8px;
   user-select: none;
   transition: background-color 200ms;

@@ -1,6 +1,6 @@
 import StyledTaskbarMenu, {
-  StyledTaskbarSystemApps,
-  StyledTaskbarApps,
+  StyledTaskbarSection,
+  StyledSectionTitle,
 } from "./TaskbarMenu.style";
 import TaskbarApp from "../TaskbarApp/TaskbarApp";
 
@@ -22,21 +22,37 @@ const TaskbarMenu = ({ isOpen, setIsOpen, appsManager, ...rest }) => {
       }}
       {...rest}
     >
-      <StyledTaskbarApps>
-        {appsManager.installedApps.map((app, index) => {
-          return (
-            <TaskbarApp key={index} {...app} onClick={() => openApp(app)} />
-          );
-        })}
-      </StyledTaskbarApps>
+      {/* Applications utilisateur */}
+      <div>
+        <StyledSectionTitle>Applications</StyledSectionTitle>
+        <StyledTaskbarSection>
+          {appsManager.installedApps.map((app, index) => (
+            <TaskbarApp
+              key={index}
+              icon={app.icon}
+              app={app}
+              onClick={() => openApp(app)}
+              label={app.name}
+            />
+          ))}
+        </StyledTaskbarSection>
+      </div>
 
-      <StyledTaskbarSystemApps>
-        {appsManager.systemApps.map((app, index) => {
-          return (
-            <TaskbarApp key={index} {...app} onClick={() => openApp(app)} />
-          );
-        })}
-      </StyledTaskbarSystemApps>
+      {/* Applications système */}
+      <div>
+        <StyledSectionTitle>Système</StyledSectionTitle>
+        <StyledTaskbarSection>
+          {appsManager.systemApps.map((app, index) => (
+            <TaskbarApp
+              key={index}
+              icon={app.icon}
+              app={app}
+              onClick={() => openApp(app)}
+              label={app.name}
+            />
+          ))}
+        </StyledTaskbarSection>
+      </div>
     </StyledTaskbarMenu>
   );
 };
