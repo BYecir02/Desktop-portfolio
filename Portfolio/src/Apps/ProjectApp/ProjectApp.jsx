@@ -1,6 +1,8 @@
 import React, { useState } from "react";
-import { FaArrowLeft } from "react-icons/fa";
 import matchcv from "../../assets/images/matchcv.png";
+import Portfolio from "../../assets/images/Portfolio.png";
+import { FaArrowLeft, FaGithub } from "react-icons/fa";
+
 import {
     ProjectContainer,
     NavigationBar,
@@ -26,6 +28,21 @@ const ProjectApp = () => {
   const projects = [
     {
       id: 1,
+      name: "Portfolio Desktop",
+      description:
+        "Un portfolio interactif conçu comme un système d’exploitation desktop, avec fenêtres, barre de tâches et thème sombre. Une manière originale de présenter mes projets et compétences.",
+      details: `
+    - Tech : React, Emotion, Context API
+    - Expérience immersive type OS
+    - Responsive + Dark Mode
+      `,
+      period: "2025",
+      type: "Portfolio interactif",
+      github: "https://github.com/username/matchcv",
+      image: Portfolio,
+    },
+    {
+      id: 2,
       name: "MatchCV",
       description:
         "MatchCV est une plateforme dédiée à l’optimisation de la recherche d’emploi et d’alternance. L’utilisateur y insère des annonces d’emploi, et l'outil analyse ces annonces pour extraire les informations essentielles telles que les compétences requises, le titre du poste, et les autres critères. Ensuite, l’utilisateur peut comparer son profil aux critères de l’annonce et générer un CV et une lettre de motivation personnalisés, exportables en format PDF. L'outil permet aussi de suivre l’évolution des candidatures : l’état des candidatures envoyées, des réponses obtenues, des entretiens programmés, etc.",
@@ -42,7 +59,7 @@ const ProjectApp = () => {
       image: matchcv,
     },
     {
-        id: 2,
+        id: 3,
         name: "Application de gestion de sortie",
         description:
           "Application web facilitant l'organisation et la gestion des événements en centralisant les inscriptions et les notifications des participants.",
@@ -78,13 +95,13 @@ const ProjectApp = () => {
               __html: selectedProject.details.replace(/\n/g, "<br />"),
             }}
           />
-          <GitHubLink
-            href={selectedProject.github}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Voir sur GitHub
-          </GitHubLink>
+        <GitHubLink
+          href={selectedProject.github}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <FaGithub size={24} style={{ color: "#4078c0" }} /> {/* Icône GitHub avec couleur */}
+        </GitHubLink>
         </ProjectDetails>
       ) : (
         <ProjectGrid>
